@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+//import logo from "./logo.svg";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+//components
+import Wrapper from './components/Wrapper';
+
+function App(){
+  return (
+      <BrowserRouter>
+          <div>
+              <Wrapper>
+                <h1>Book Journal</h1>
+              </Wrapper>
+          </div>
+      </BrowserRouter>
+  )
 }
 
 export default App;
+// nav and router switch inside wrapper, footer outside
