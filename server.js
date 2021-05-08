@@ -2,7 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 
+const session = require("express-session");
+const passport = require("./config/passport");
+
 const PORT = process.env.PORT || 3001;
+const db = require("./models");
+const routes = require("./routes");
 
 const app = express();
 
@@ -14,6 +19,16 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// We need to use sessions to keep track of our user's login status
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+// Initialize middleware, intialize passport
+app.use(passport.initialize());
+// Initialize middleware to alter the request object and deserialize "user" session ID from the request into a proper user object
+app.use(passport.session());
+
+
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/user", {
     useNewUrlParser: true,
@@ -23,7 +38,7 @@ mongoose.connect(
 });
 
 // routes
-require("./routes/api.js")(app);
+app.use(routes);
 
 // Send every request to the React app
 // Define any API routes before this runs

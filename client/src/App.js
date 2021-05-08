@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import SignUp from "./components/SignUp";
+import LogIn from "./components/LogIn";
 //import logo from "./logo.svg";
 
 //components
@@ -10,7 +12,11 @@ function App(){
       <BrowserRouter>
           <div>
               <Wrapper>
-                <h1>Book Journal</h1>
+                <div>
+                  <h1>Book journal</h1>
+                  <SignUp />
+                  <LogIn />
+                </div>
               </Wrapper>
           </div>
       </BrowserRouter>
