@@ -28,13 +28,19 @@ module.exports = function(app) {
         password: await bcrypt.hash(req.body.password, 10)
       })
         .then(() => {
-          //res.redirect(307, "/");
-          console.log('res from api routes'+res)
+          console.log('success') //checking response
         })
         .catch(err => {
           res.status(401).json(err);
         });
   });
+
+  //route for seeing users in database
+  app.get('/api/usersinfo', (req, res) => {
+    User.find().then((res) => {
+      console.log(res);
+    })
+  })
 
   // Route for logging user out - how to manage? where does req.logout come from?
   app.get("/logout", (req, res) => {

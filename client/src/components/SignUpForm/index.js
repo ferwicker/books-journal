@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 
-function SignUp() {
+function SignUpForm() {
     const emailRef = React.createRef();
     const passwordRef = React.createRef();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    console.log(email + password);
     //add api routes call here?
     function HandleSubmit(e){
         e.preventDefault();
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
+        
         
         // fetch call to /api/signup
         API.userSignup(email, password)
@@ -34,4 +36,4 @@ function SignUp() {
   )
 }
 
-export default SignUp;
+export default SignUpForm;
