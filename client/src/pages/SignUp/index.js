@@ -13,6 +13,7 @@ function SignUp(){
 
     const [formObject, setFormObject] = useState({
         email: "",
+        username: "",
         password: ""
       })
     
@@ -30,14 +31,16 @@ function SignUp(){
       // on submit handler
     function handleFormSubmit(e) {
         e.preventDefault();
-        if(formObject.email && formObject.password) {
+        if(formObject.email && formObject.password && formObject.username) {
             //api call here, then set form object to blank
             API.userSignup({
                 email: formObject.email,
+                username: formObject.username,
                 password: formObject.password
               })
                 .then(() => setFormObject({
                   email: "",
+                  username: "",
                   password: ""
                 }))
                 .catch(err => console.log(err));
@@ -54,6 +57,12 @@ function SignUp(){
                 name="email"
                 placeholder="Email (required)"
                 value={formObject.email}
+            />
+            <Input
+                onChange={handleInputChange}
+                name="username"
+                placeholder="Username (required)"
+                value={formObject.username}
             />
             <Input
                 onChange={handleInputChange}

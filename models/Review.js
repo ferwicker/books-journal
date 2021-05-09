@@ -2,21 +2,24 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-    email: {
+const ReviewSchema = new Schema({
+    userid: {
         type: String,
         required: true
     },
-    username: {
+    bookid: {
         type: String,
         required: true
     },
-    password: {
+    rating: {
         type: String,
         required: true
+    },
+    reviewText: {
+        type: String
     }
 });
 
-const User = mongoose.model("User", UserSchema);
+const Review = mongoose.model("Review", ReviewSchema);
 
-module.exports = User;
+module.exports = Review;

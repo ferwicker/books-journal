@@ -25,6 +25,7 @@ module.exports = function(app) {
       //add check to see if user already exists
       User.create({
         email: req.body.email,
+        username: req.body.username,
         password: await bcrypt.hash(req.body.password, 10)
       })
         .then(() => {
