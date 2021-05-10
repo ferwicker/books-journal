@@ -24,7 +24,7 @@ function Login(){
     //on change handler
     function handleInputChange(event) {
         const { name, value } = event.target;
-        setFormObject({...formObject, [name]: value})
+        setFormObject({...formObject, [name]: value.trim()})
     };
 
     // on submit handler
@@ -32,6 +32,15 @@ function Login(){
         e.preventDefault();
         if(formObject.email && formObject.password) {
             //check credentials here, then set form object to blank
+            API.userLogin({
+                email: formObject.email,
+                password: formObject.password
+              })
+                .then(() => setFormObject({
+                  email: "",
+                  password: ""
+                }))
+                .catch(err => console.log(err));
            
         }
     }

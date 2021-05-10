@@ -1,9 +1,9 @@
-const router = require("express").Router();
-//const db = require("../../models");
-const passport = require("../../config/passport");
+//const router = require("express").Router();
+//const db = require("../models");
+const passport = require("../config/passport");
 
 const bcrypt = require('bcrypt');
-const User = require('../../models/User');
+const User = require('../models/User');
 
 module.exports = function(app) {
     // Using the passport.authenticate middleware with our local strategy.
@@ -12,24 +12,27 @@ module.exports = function(app) {
     app.post("/api/login", passport.authenticate("local"), (req, res) => {
       // Sending back a password, even a hashed password, isn't a good idea
       // WHY ID?
+      console.log(req);
       res.json({
         email: req.user.email,
         id: req.user.id
       });
     });
 
-    // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+    // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to bcrypt
+  // If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", async (req, res) => {
       //add check to see if user already exists
+      //console.log('received')
       User.create({
         email: req.body.email,
         username: req.body.username,
         password: await bcrypt.hash(req.body.password, 10)
       })
-        .then(() => {
-          console.log('success') //checking response
+        .then((res) => {
+          //console.log(res) //checking response OK
+          res.redirect(307, "/api/login");
         })
         .catch(err => {
           res.status(401).json(err);

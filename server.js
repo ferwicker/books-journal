@@ -1,15 +1,12 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const path = require("path");
+const PORT = process.env.PORT || 3002;
+const app = express();
 
 const session = require("express-session");
 const passport = require("./config/passport");
 
-const PORT = process.env.PORT || 3002;
-//const db = require("./models");
-const routes = require("./routes");
-
-const app = express();
+const mongoose = require("mongoose");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -38,7 +35,8 @@ mongoose.connect(
 });
 
 // routes
-app.use(routes);
+//app.use(require("./routes/api.js"));
+require("./routes/api.js")(app);
 
 // Send every request to the React app
 // Define any API routes before this runs

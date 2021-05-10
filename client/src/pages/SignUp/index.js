@@ -25,7 +25,7 @@ function SignUp(){
       //on change handler
     function handleInputChange(event) {
         const { name, value } = event.target;
-        setFormObject({...formObject, [name]: value})
+        setFormObject({...formObject, [name]: value.trim()})
     };
 
       // on submit handler
