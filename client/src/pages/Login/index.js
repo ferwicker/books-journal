@@ -38,28 +38,38 @@ function Login(){
     
     return (
         <Container>
-            <h1>Login Page</h1>
-            <form>
-            <Input
-                onChange={handleInputChange}
-                name="email"
-                placeholder="Email (required)"
-                value={formObject.email}
-            />
-            <Input
-                onChange={handleInputChange}
-                name="password"
-                placeholder="Password (required)"
-                value={formObject.password}
-            />
-            <FormBtn
-                disabled={!(formObject.email && formObject.password)}
-                onClick={handleFormSubmit}
-            >
-               Log in
-            </FormBtn>
+            <h1>Welcome back!</h1>
+            <Row>
+                <Col size='sm-6'>
+                    <div>
+                        <form>
+                            <Input
+                                onChange={handleInputChange}
+                                name="email"
+                                label="Email"
+                                placeholder="Email (required)"
+                                value={formObject.email}
+                            />
+                            <Input
+                                onChange={handleInputChange}
+                                name="password"
+                                label="Password"
+                                placeholder="Password (required)"
+                                value={formObject.password}
+                            />
+                            <FormBtn
+                                disabled={!(formObject.email && formObject.password)}
+                                onClick={handleFormSubmit}
+                            >
+                            Log in
+                            </FormBtn>
+                        </form>
+                    </div>
+                </Col>
+                <Col size='sm-6'>
 
-            </form>
+                </Col>
+            </Row>
         </Container>
     );
 }

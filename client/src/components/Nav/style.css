@@ -1,0 +1,27 @@
+nav {
+    background-color: #daddec;
+    min-height: 70px;
+}
+
+.navbar-brand {
+    width: 150px;
+}
+
+.navlink {
+    display: block;
+    padding: .5rem 1rem;
+    color: #4156a1;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+.navlink:hover {
+    color: #d69929;
+}
+
+.navbar-toggler {
+    color: #4156a1;
+}
+
+

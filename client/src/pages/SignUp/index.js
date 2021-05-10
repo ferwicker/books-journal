@@ -55,18 +55,21 @@ function SignUp(){
             <Input
                 onChange={handleInputChange}
                 name="email"
+                label="Email"
                 placeholder="Email (required)"
                 value={formObject.email}
             />
             <Input
                 onChange={handleInputChange}
                 name="username"
+                label="Username"
                 placeholder="Username (required)"
                 value={formObject.username}
             />
             <Input
                 onChange={handleInputChange}
                 name="password"
+                label="Password"
                 placeholder="Password (required)"
                 value={formObject.password}
             />

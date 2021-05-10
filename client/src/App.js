@@ -10,6 +10,7 @@ import Discover from './pages/Discover';
 //import logo from "./logo.svg";
 
 //components
+import Nav from './components/Nav'
 import Wrapper from './components/Wrapper';
 
 function App(){
@@ -17,7 +18,7 @@ function App(){
       <BrowserRouter>
           <div>
               <Wrapper>
-                {/* Nav component here */}
+                <Nav />
                 <Switch>
                   <Route exact path={['/', '/about']}>
                     <About />
