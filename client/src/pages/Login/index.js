@@ -8,6 +8,7 @@ import Row from "../../components/Row";
 import { Input, FormBtn } from "../../components/Form";
 //import front end api
 import API from "../../utils/API"
+import './style.css'
 
 function Login(){
 
@@ -50,7 +51,7 @@ function Login(){
             <h1>Welcome back!</h1>
             <Row>
                 <Col size='sm-6'>
-                    <div>
+                    <div className='full-height d-flex flex-column justify-content-center'>
                         <form>
                             <Input
                                 onChange={handleInputChange}

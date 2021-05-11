@@ -4,6 +4,7 @@ const passport = require("../config/passport");
 
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const Shelf = require('../models/Shelf')
 
 module.exports = function(app) {
     // Using the passport.authenticate middleware with our local strategy.
@@ -19,27 +20,48 @@ module.exports = function(app) {
       });
     });
 
-    // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to bcrypt
+  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to bcrypt
   // If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", async (req, res) => {
-      //add check to see if user already exists
       //console.log('received')
       User.create({
         email: req.body.email,
         username: req.body.username,
         password: await bcrypt.hash(req.body.password, 10)
       })
-        .then((res) => {
-          //console.log(res) //checking response OK
-          res.redirect(307, "/api/login");
+        .then((user) => {
+          //create default shelves for new user
+          const userid=user._id
+          Shelf.create([
+            {
+            name: 'Books I own',
+            userid: userid,
+            books: []
+          },
+          {
+            name: 'Wishlist',
+            userid: userid,
+            books: []
+          },
+          {
+            name: 'TBR',
+            userid: userid,
+            books: []
+          }
+        ])
+        })
+        .then(()=>{
+          console.log(res);
+          //send something to front end, how to log in user
+          res.send(true);
         })
         .catch(err => {
           res.status(401).json(err);
         });
   });
 
-  //route for seeing users in database
+  //route for seeing users in database, logs to server console
   app.get('/api/usersinfo', (req, res) => {
     User.find().then((res) => {
       console.log(res);
