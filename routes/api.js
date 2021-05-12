@@ -23,6 +23,10 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", async (req, res) => {
       //console.log('received')
+      const user ={
+        email: req.body.email,
+        username: req.body.username
+      }
       User.create({
         email: req.body.email,
         username: req.body.username,
@@ -52,7 +56,7 @@ module.exports = function(app) {
         .then(()=>{
           console.log('signup success');
           //send something to front end, how to log in user
-          res.send(true);
+          res.json(user);
         })
         .catch(err => {
           res.status(401).json(err);

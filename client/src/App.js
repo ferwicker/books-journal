@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { userContext } from "./utils/Context.js";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 //import pages
@@ -14,9 +15,12 @@ import Nav from './components/Nav'
 import Wrapper from './components/Wrapper';
 
 function App(){
+
+  const [currentUser, setCurrentUser] = useState("");
+
   return (
       <BrowserRouter>
-          <div>
+          <userContext.Provider value={[currentUser, setCurrentUser]}>
               <Wrapper>
                 <Nav />
                 <Switch>
@@ -35,7 +39,7 @@ function App(){
                 </Switch>
               </Wrapper>
               {/* Footer component here */}
-          </div>
+          </userContext.Provider>
       </BrowserRouter>
   )
 }

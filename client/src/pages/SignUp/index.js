@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { userContext } from "../../utils/Context.js";
 import { Link, useHistory } from "react-router-dom";
 //basic layout components
 import Col from "../../components/Col";
@@ -11,6 +12,8 @@ import API from "../../utils/API"
 
 function SignUp(){
     let history = useHistory();
+
+    const [currentUser, setCurrentUser] = useContext(userContext);
 
     const [formObject, setFormObject] = useState({
         email: "",
@@ -42,11 +45,11 @@ function SignUp(){
                 .then((res) => {
 
                 if(res.status === 200){
-                    console.log(res);
+                    setCurrentUser(res.data);
                     history.push("/discover");
                 }
             })
-                .catch(err => console.log(err));
+                .catch(err => console.log('Error' + err));
         
         }
     }

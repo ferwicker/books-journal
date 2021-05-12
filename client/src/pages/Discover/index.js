@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import React, {useState, useEffect, useContext} from "react";
+import { userContext } from "../../utils/Context.js";
 //basic layout components
 import Col from "../../components/Col";
 import Container from "../../components/Container";
@@ -11,6 +11,7 @@ import { ResultListItem, Thumbnail } from "../../components/BookSearchRes";
 const axios = require('axios');
 
 function Discover(){
+    const [currentUser, setCurrentUser] = useContext(userContext);
     //set state for search terms
     const [formObject, setFormObject] = useState({
         search: "",
@@ -24,6 +25,7 @@ function Discover(){
     useEffect(() => {
         window.scrollTo(0, 0);
         setBooksArray([]);
+        console.log(currentUser);
       }, []);
 
       //handle change
