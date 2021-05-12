@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 //basic layout components
 import Col from "../../components/Col";
 import Container from "../../components/Container";
@@ -11,6 +11,7 @@ import API from "../../utils/API"
 import './style.css'
 
 function Login(){
+    let history = useHistory();
 
     const [formObject, setFormObject] = useState({
         email: "",
@@ -37,10 +38,19 @@ function Login(){
                 email: formObject.email,
                 password: formObject.password
               })
-                .then(() => setFormObject({
-                  email: "",
-                  password: ""
-                }))
+              .then((res) => {
+
+                if(res.status === 200){
+                    console.log(res);
+                    history.push("/discover");
+                } else {
+                    alert('Incorrect email or password');
+                    setFormObject({
+                        email: '',
+                        password: ''
+                    })
+                }
+            })
                 .catch(err => console.log(err));
            
         }

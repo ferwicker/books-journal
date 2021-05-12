@@ -1,4 +1,5 @@
 const passport = require("passport");
+const bcrypt = require ('bcrypt');
 const LocalStrategy = require("passport-local").Strategy;
 
 //const db = require("../models");
@@ -12,12 +13,13 @@ passport.use(
         usernameField: "email"
       },
       (email, password, done) => {
+        
         // When a user tries to sign in this code runs
-        User.findOne({
-          where: {
+        User.findOne(
+          {
             email: email
           }
-        }).then(dbUser => {
+        ).then(dbUser => {
           // If there's no user with the given email
           if (!dbUser) {
             return done(null, false, {
@@ -25,7 +27,7 @@ passport.use(
             });
           }
           // If there is a user with the given email, but the password the user gives us is incorrect
-          else if (!dbUser.validPassword(password)) {
+          else if (!bcrypt.compareSync(password, dbUser.password)) {
             return done(null, false, {
               message: "Incorrect password."
             });

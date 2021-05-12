@@ -42,6 +42,7 @@ function SignUp(){
                 .then((res) => {
 
                 if(res.status === 200){
+                    console.log(res);
                     history.push("/discover");
                 }
             })

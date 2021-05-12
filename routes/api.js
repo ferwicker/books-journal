@@ -12,8 +12,6 @@ module.exports = function(app) {
     // Otherwise the user will be sent an error
     app.post("/api/login", passport.authenticate("local"), (req, res) => {
       // Sending back a password, even a hashed password, isn't a good idea
-      // WHY ID?
-      console.log(req);
       res.json({
         email: req.user.email,
         id: req.user.id
@@ -52,7 +50,7 @@ module.exports = function(app) {
         ])
         })
         .then(()=>{
-          console.log(res);
+          console.log('signup success');
           //send something to front end, how to log in user
           res.send(true);
         })
