@@ -1,19 +1,24 @@
 .btn-form {
-    background-color: #4156a1;
+    background-color: #8054C6;
     border: none;
     border-radius: 6px;
     color: white;
     font-weight: 400;
     padding: 7px 17px;
     text-transform: uppercase;
+    transition: 1s ease all;
 }
 
 .btn-form:hover{
-    background-color: #556ab4;
-    transition: .2s ease all;
+    background-color: #45cf8f;
+    transition: 1s ease all;
 }
 
 .btn-form:disabled,
 .btn-form[disabled]{
-    background-color: #a1aaca;
+    background-color: #9fd4bc;
+}
+
+input {
+    max-width: 300px;
 }

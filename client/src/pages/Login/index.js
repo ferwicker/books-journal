@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { userContext } from "../../utils/Context.js";
 import { Link, useHistory } from "react-router-dom";
 //basic layout components
 import Col from "../../components/Col";
@@ -8,9 +9,10 @@ import Row from "../../components/Row";
 import { Input, FormBtn } from "../../components/Form";
 //import front end api
 import API from "../../utils/API"
-import './style.css'
+import '../style.css'
 
 function Login(){
+    const [currentUser, setCurrentUser] = useContext(userContext);
     let history = useHistory();
 
     const [formObject, setFormObject] = useState({
@@ -41,7 +43,8 @@ function Login(){
               .then((res) => {
 
                 if(res.status === 200){
-                    console.log(res);
+                    //console.log(res);
+                    setCurrentUser(res.data);
                     history.push("/discover");
                 } else {
                     alert('Incorrect email or password');
@@ -58,10 +61,10 @@ function Login(){
     
     return (
         <Container>
-            <h1>Welcome back!</h1>
             <Row>
                 <Col size='sm-6'>
-                    <div className='full-height d-flex flex-column justify-content-center'>
+                    <div className='tall-text-container d-flex flex-column justify-content-center'>
+                        <h1>Log into your account:</h1>
                         <form>
                             <Input
                                 onChange={handleInputChange}
@@ -84,10 +87,13 @@ function Login(){
                             Log in
                             </FormBtn>
                         </form>
+                        <p className='login-alternative'>Don't have an account yet? <Link to="/signup">Sign up now</Link>.</p>
                     </div>
                 </Col>
                 <Col size='sm-6'>
-
+                    <div className='d-flex justify-content-center align-items-center' style={{height:'100%'}}>
+                        <img src='./images/login-page-04.svg' alt='cartoon book characters' className='book-stack'></img>
+                    </div>
                 </Col>
             </Row>
         </Container>

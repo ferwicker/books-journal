@@ -1,0 +1,55 @@
+.homepage-hero-intro {
+    color: #8054C6;
+    font-family: Termina, sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.tall-text-container {
+    min-height: 80vh;
+    padding: 40px 0;
+}
+
+.home-btn {
+    background-color: #45cf8f;
+    border-radius: 10px;
+    color: white;
+    font-family: Termina, sans-serif;
+    font-size: 24px;
+    margin-top:20px;
+    padding: 8px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 1s ease-in-out all;
+}
+
+.home-btn:hover {
+    background-color: #8054C6;
+    color: white;
+    text-decoration: none;
+    transition: 1s ease-in-out all;
+}
+
+.book-stack {
+    max-width: 100%;
+    max-height: 600px;
+}
+
+.login-alternative {
+    font-size: 14px;
+    color: rgb(78, 78, 78);
+    margin: 20px 0 0 0;
+}
+
+.login-alternative a {
+    color: #8054C6;
+    text-decoration: none;
+    transition: 1s ease-in-out all;
+}
+
+.login-alternative a:hover {
+    color: #45cf8f;
+    text-decoration: none;
+    transition: 1s ease-in-out all;
+}

@@ -35,12 +35,12 @@ function Discover(){
       }
 
       //handle submit
-      function handleFormSubmit(e) {
+      function handleFormSubmit (e) {
         e.preventDefault();
         if(formObject.search !== '') {
             //call the API with the search parameter
             axios.get(`https://www.googleapis.com/books/v1/volumes?q=${formObject.search}`).then(resp => {
-                console.log(resp.data.items);
+                console.log(resp.data.items[0].volumeInfo.title);
                 setBooksArray(resp.data.items);
                 setFormObject({
                     search: "",
@@ -49,6 +49,13 @@ function Discover(){
             });
         }
     }
+
+      //handle save button
+      function handleSaveBtn (e) {
+        e.preventDefault();
+        const userId = currentUser.id;
+        console.log('book saved! User: ' + userId);
+      }
     
     return (
         <Container>
@@ -71,10 +78,12 @@ function Discover(){
             {booksArray.length > 0 ? booksArray.map((book,index)=>(
                 <ResultListItem 
                     key={book.id}
+                    bookId={book.id}
                     title={book.volumeInfo.title}
                     author={book.volumeInfo.authors[0]}
                     snippet={book.searchInfo ? book.searchInfo.textSnippet : 'no description available'} 
                     thumbnail={book.volumeInfo.imageLinks.smallThumbnail}
+                    onClick={handleSaveBtn}
                 />
             )) : <h2>no results to show</h2>}
         </Container>
