@@ -36,7 +36,7 @@ function Footer () {
                     </Col>
                 </Row>
             </Container>
-            <p className='footer-credit'>Build with bookish ❤️ by <a href='www.ferwicker.com' target='_blank'>Fer Wicker</a></p>
+            <p className='footer-credit'>Made with bookish ❤️ by <a href='http://ferwicker.com/' target='_blank'>Fer Wicker</a></p>
         </footer>
     )
 };

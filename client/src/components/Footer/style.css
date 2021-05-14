@@ -40,4 +40,9 @@ footer {
 
 .footer-credit a {
     color: #fff;
+    transition: .3s ease-in-out all;
+}
+
+.footer-credit a:hover {
+    color: rgb(214, 247, 253);
 }
