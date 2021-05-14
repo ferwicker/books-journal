@@ -44,8 +44,15 @@ function Login(){
 
                 if(res.status === 200){
                     //console.log(res);
-                    setCurrentUser(res.data);
-                    history.push("/discover");
+                    const reqId = res.data.id //this returns the right object
+                    const currentuser=res.data;
+                    API.userShelves({id:reqId}).then((resshelves)=> {
+                        //console.log('front end shelves: ' + resshelves.data)
+                        currentuser.shelves=resshelves.data
+                    }).then(()=>{
+                        setCurrentUser(currentuser);
+                        history.push("/discover");
+                    })
                 } else {
                     alert('Incorrect email or password');
                     setFormObject({
@@ -56,7 +63,7 @@ function Login(){
             })
                 .catch(err => console.log(err));
            
-        }
+        } 
     }
     
     return (

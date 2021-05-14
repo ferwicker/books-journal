@@ -110,4 +110,25 @@ module.exports = function(app) {
     res.json({username:req.user.username, id:req.user._id});
   });
 
+  //get the logged in user's shelved -- works!
+  app.post("/api/user/shelves", (req, res) => {
+    const userid=req.body.id
+    console.log('submitted user id: '+ userid)
+    Shelf.find({userid:userid}).then((shelves)=>{
+      console.log(shelves);
+      res.json(shelves);
+    })
+  })
+
+  //push a book into a shelf's array
+  app.post("/api/shelf/addbook", (req, res) => {
+    const shelfid = req.body.shelf;
+    const bookid = req.body.book;
+    Shelf.updateOne(
+      { _id: shelfid },
+      { $push: { books: bookid } }
+      ).then((response)=>{
+        res.json(response);
+      })
+  })
 };

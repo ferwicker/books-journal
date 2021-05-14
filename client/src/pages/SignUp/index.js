@@ -52,12 +52,16 @@ function SignUp(){
                             email: formObject.email,
                             password: formObject.password
                         }).then(()=>console.log('new user logged in'));
-                        setCurrentUser(res.data);
+                        //setCurrentUser(res.data);
+                        const currentuser=res.data;
                         API.createDefaultShelves({id: res.data.id}).then((response)=>{
                             if(response.status === 200){
-                                history.push("/discover");
+                                currentuser.shelves=response.data;
                             }
-                        }).catch(err => console.log('Shelves Error' + err));
+                        }).then(()=>{
+                            setCurrentUser(currentuser);
+                            history.push("/discover");
+                          }).catch(err => console.log('Shelves Error' + err));
                     }
                 })
                     .catch(err => console.log('Error' + err));

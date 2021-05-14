@@ -25,7 +25,14 @@ export default {
 
   // Check if user is logged in
   userLoggedIn: function() {
-    return axios.get("/api/logged-in")
-  }
+    return axios.get("/api/logged-in");
+  },
 
+  userShelves: function(userId) {
+    return axios.post("/api/user/shelves", userId);
+  },
+
+  saveBook: function(data) {
+    return axios.post("/api/shelf/addbook", data);
+  }
 };

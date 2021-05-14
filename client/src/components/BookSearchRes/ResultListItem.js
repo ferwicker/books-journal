@@ -11,7 +11,13 @@ import './style.css'
 
 export function ResultListItem(props) {
   //const [currentUser, setCurrentUser] = useContext(userContext);
+  const [selectShelf, setSelectShelf] = useState();
+  const selectEl = document.querySelector('#select-shelf');
 
+  function HandleShelfChange (e){
+    const {value} = e.target;
+    setSelectShelf(value);
+  }
   return (
     <div className='container-fluid list-item'>
       <Row>
@@ -31,15 +37,16 @@ export function ResultListItem(props) {
             />
           </Col>
           <Col size='sm-2'>
-            <select className="form-select select-shelf" aria-label="Default select example">
-              <option value="shelfid">Wishlist</option>
-              <option value="shelfid">Books I own</option>
-              <option value="2">TBR</option>
-              <option value="3">All time faves</option>
+            <select id='select-shelf' className="form-select select-shelf" aria-label="Shelf select" onChange={HandleShelfChange}>
+              <option>Select a shelf</option>
+              {props.shelves.map((shelf, index)=>
+                <option key={index} value={shelf._id}>{shelf.name}</option>
+              )}
             </select>
             <SaveBtn 
               className='save-btn'
               data-bookid= {props.bookId}
+              data-shelfid={selectShelf}
               onClick= {props.onClick}
             />
           </Col>

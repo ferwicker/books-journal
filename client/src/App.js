@@ -25,9 +25,15 @@ function App(){
     API.userLoggedIn().then(response => {
       //the current user will go here
       if(response !== undefined){
-        setCurrentUser(response.data);
-      }
-      
+        const reqId = response.data.id //this returns the right object
+        const currentuser=response.data;
+        API.userShelves({id:reqId}).then((resshelves)=> {
+          //console.log('front end shelves: ' + resshelves.data)
+          currentuser.shelves=resshelves.data
+        }).then(()=>{
+          setCurrentUser(currentuser);
+        })
+      }  
     })
   }, []);
 

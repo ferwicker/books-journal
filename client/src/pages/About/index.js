@@ -13,7 +13,7 @@ function About(){
     //scroll page to top
     useEffect(() => {
         window.scrollTo(0, 0)
-        console.log('current user as ' + currentUser);
+        console.log('current user as ' + currentUser); //this might just be too fast to register
       }, []);
     
     return (
