@@ -61,3 +61,13 @@
 .search-form {
     width: 100%;
 }
+
+.gradient-big-text {
+    font-family: Termina, sans-serif;
+    font-size: 72px;
+    font-weight: 600;
+    background: -webkit-linear-gradient(#49DD98, #8F36DD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+  }

@@ -33,6 +33,11 @@ function About(){
                     </div>
                 </Col>
             </Row>
+            <Row>
+                <div className='tall-text-container d-flex flex-column justify-content-center align-items-center'>
+                    <p className='gradient-big-text'>So many books, <br></br>so little time...</p>
+                </div>
+            </Row>
         </Container>
     );
 }
