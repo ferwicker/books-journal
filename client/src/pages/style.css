@@ -53,3 +53,11 @@
     text-decoration: none;
     transition: 1s ease-in-out all;
 }
+
+.discover-top {
+    padding: 40px 0;
+}
+
+.search-form {
+    width: 100%;
+}

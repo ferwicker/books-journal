@@ -73,7 +73,7 @@ function SignUp(){
             <Row>
                 <Col size='sm-6'>
                     <div className='tall-text-container d-flex flex-column justify-content-center'>
-                        <h1>Sign Up Page</h1>
+                        <h1>Start you book journey today:</h1>
                         <form>
                         <Input
                             onChange={handleInputChange}
@@ -108,7 +108,7 @@ function SignUp(){
                 </Col>
                 <Col size='sm-6'>
                     <div className='d-flex justify-content-center align-items-center' style={{height:'100%'}}>
-                        <img src='./images/login-page-04.svg' alt='cartoon book characters' className='book-stack'></img>
+                        <img src='./images/signup-page-05.svg' alt='girl with pile of books' className='book-stack'></img>
                     </div>
                 </Col>
             </Row>

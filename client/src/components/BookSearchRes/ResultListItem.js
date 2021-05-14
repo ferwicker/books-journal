@@ -21,27 +21,24 @@ export function ResultListItem(props) {
               src={props.thumbnail}
             />
           </Col>
-          <Col size='sm-2'>
-            {props.title} 
-            {props.author}
+          <Col size='sm-3'>
+            <h4>{props.title}</h4>
+            <p>{props.author}</p>
           </Col>
-          <Col size='sm-6'>
+          <Col size='sm-5'>
             <Snippet
               snippet={props.snippet}
             />
           </Col>
           <Col size='sm-2'>
-            <div className="dropdown">
-              <button className=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
-              </button>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a className="dropdown-item" href="#">Action</a></li>
-                <li><a className="dropdown-item" href="#">Another action</a></li>
-                <li><a className="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </div>
+            <select className="form-select select-shelf" aria-label="Default select example">
+              <option value="shelfid">Wishlist</option>
+              <option value="shelfid">Books I own</option>
+              <option value="2">TBR</option>
+              <option value="3">All time faves</option>
+            </select>
             <SaveBtn 
+              className='save-btn'
               data-bookid= {props.bookId}
               onClick= {props.onClick}
             />

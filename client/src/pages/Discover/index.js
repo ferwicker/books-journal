@@ -5,7 +5,7 @@ import Col from "../../components/Col";
 import Container from "../../components/Container";
 import Row from "../../components/Row";
 // other components
-import { Input, FormBtn } from "../../components/Form";
+import { Input, SearchBtn } from "../../components/Form";
 import { ResultListItem, Thumbnail } from "../../components/BookSearchRes";
 
 const axios = require('axios');
@@ -60,20 +60,23 @@ function Discover(){
     return (
         <Container>
             <Row>
-                <h1>Discover Page</h1>
-                <form onSubmit={handleFormSubmit}>
-                    <Input
-                        onChange={handleSearchChange}
-                        name="search"
-                        placeholder="Search"
-                        value={formObject.search}
-                    />
-                    <FormBtn
-                    disabled={!(formObject.search)}
-                    onClick={handleFormSubmit}>
-                        Search
-                    </FormBtn>
-                </form>
+                <div className='discover-top'>
+                    <h1>Discover Your Next Favourite Read</h1>
+                    <form className='d-sm-flex align-items-center search-form' onSubmit={handleFormSubmit}>
+                        <Input
+                            className='search-input'
+                            onChange={handleSearchChange}
+                            name="search"
+                            placeholder="Search"
+                            value={formObject.search}
+                        />
+                        <SearchBtn
+                        disabled={!(formObject.search)}
+                        onClick={handleFormSubmit}>
+                            Search
+                        </SearchBtn>
+                    </form>
+                </div>
             </Row>
             {booksArray.length > 0 ? booksArray.map((book,index)=>(
                 <ResultListItem 
@@ -82,10 +85,10 @@ function Discover(){
                     title={book.volumeInfo.title}
                     author={book.volumeInfo.authors[0]}
                     snippet={book.searchInfo ? book.searchInfo.textSnippet : 'no description available'} 
-                    thumbnail={book.volumeInfo.imageLinks.smallThumbnail}
+                    thumbnail={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''}
                     onClick={handleSaveBtn}
                 />
-            )) : <h2>no results to show</h2>}
+            )) : <h2>Whoops! No results to show.</h2>}
         </Container>
     );
 }

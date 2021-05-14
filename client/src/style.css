@@ -3,6 +3,10 @@ body {
   padding: 0;
 }
 
+h2 {
+  color: #383838;
+}
+
 main {
   background-color: #fafafa;
   font-family: montserrat, sans-serif;

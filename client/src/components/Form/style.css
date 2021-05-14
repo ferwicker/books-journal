@@ -19,6 +19,33 @@
     background-color: #9fd4bc;
 }
 
-input {
-    max-width: 300px;
+.search-input {
+    width: 100%;
+    min-width: 60vw;
+    font-size: 24px;
+    border: solid #8054C6 1px;
+    border-radius: 10px;
+    padding: 7px 10px;
+}
+
+.search-btn {
+    background-color: #8054C6;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    padding: 7px 17px;
+    text-transform: uppercase;
+    transition: 1s ease all;
+}
+
+.search-btn:hover{
+    background-color: #45cf8f;
+    transition: 1s ease all;
+}
+
+.search-btn:disabled,
+.search-btn[disabled]{
+    background-color: #9fd4bc;
 }
