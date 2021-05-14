@@ -4,9 +4,17 @@ const PORT = process.env.PORT || 3002;
 const app = express();
 
 const session = require("express-session");
+const cors = require("cors");
 const passport = require("./config/passport");
 
+const MongoStore = require('connect-mongo');
 const mongoose = require("mongoose");
+
+app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -18,7 +26,13 @@ if (process.env.NODE_ENV === "production") {
 
 // We need to use sessions to keep track of our user's login status
 app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+  session({ 
+    secret: "keyboard cat", 
+    resave: true, 
+    saveUninitialized: false,
+    // Custom store to allow us to store the session in a database so if page is refreshed or backend crashes we can still retrieve the user session. This only works for mongo. For sequelize, you would use this https://www.npmjs.com/package/connect-session-sequelize
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/user" })
+   })
 );
 // Initialize middleware, intialize passport
 app.use(passport.initialize());

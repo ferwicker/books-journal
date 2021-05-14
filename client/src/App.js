@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { userContext } from "./utils/Context.js";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import API from "./utils/API.js";
+
 //import pages
 import About from './pages/About';
 import SignUp from './pages/SignUp';
@@ -12,11 +14,22 @@ import Discover from './pages/Discover';
 
 //components
 import Nav from './components/Nav'
+import Footer from './components/Footer'
 import Wrapper from './components/Wrapper';
 
 function App(){
 
   const [currentUser, setCurrentUser] = useState("");
+
+  useEffect(() => {
+    API.userLoggedIn().then(response => {
+      //the current user will go here
+      if(response !== undefined){
+        setCurrentUser(response.data);
+      }
+      
+    })
+  }, []);
 
   return (
       <BrowserRouter>
@@ -38,7 +51,7 @@ function App(){
                   </Route>
                 </Switch>
               </Wrapper>
-              {/* Footer component here */}
+              <Footer></Footer>
           </userContext.Provider>
       </BrowserRouter>
   )
