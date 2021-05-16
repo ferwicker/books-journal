@@ -36,6 +36,7 @@ nav {
     background: none;
     border: #fff solid 1px;
     border-radius: 10px;
+    margin: 0 0 0 10px;
     transition: color .15s ease-in-out all;
 }
 

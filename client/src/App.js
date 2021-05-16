@@ -56,7 +56,8 @@ function App(){
               <Wrapper>
                 <Nav 
                   logout = {handleLogout}
-                  shelves={userShelves || 'no shelves'}/>
+                  user = {currentUser.id}
+                  shelves={userShelves}/>
                 <Switch>
                   <Route exact path={['/', '/about']}>
                     <About />

@@ -1,18 +1,10 @@
-import React, {useState, useEffect, useContext} from "react";
-import { userContext } from "../../utils/Context.js";
+import React, { useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import logo from '../../assets/logo.svg'
 import "./style.css";
 
 function Nav (props) {
-    const [currentUser, setCurrentUser] = useContext(userContext);
-    const [userShelves, setUserShelves] = useState([]);
-
-    useEffect(() => {
-        setUserShelves(currentUser.shelves);
-        console.log('shelves set NAV')
-      }, [currentUser]);
 
     return (
         <nav className='navbar navbar-expand-lg fixed-top'>
@@ -27,31 +19,40 @@ function Nav (props) {
                     <Link to="/about" className='navlink nav-text'>
                         About
                     </Link>
-                    <Link to="/discover" className='navlink nav-text'>
-                        Discover
-                    </Link>
+                    {props.user ? 
+                        <Link to="/discover" className='navlink nav-text'>
+                            Discover
+                        </Link>
+                    :''}
+                    {props.user ?
                         <div className="dropdown">
-                            <div className="navlink nav-text dropdown-button dropdown-toggle" type="button" id="dropdownShelves" data-bs-toggle="dropdown" aria-expanded="false">
-                                My Shelves
-                            </div>
-                            <ul className="dropdown-menu" aria-labelledby="dropdownShelves">
-                                {userShelves !== undefined && userShelves.length > 0 ? userShelves.map((shelf, index)=>
-                                    <li key={index}>
-                                        <Link className="dropdown-item" to={`/shelves/${shelf._id}`}>{shelf.name}</Link>
-                                    </li>
-                                ) : <li>no shelves to show</li>}
-                                <li key='addshelf'>
-                                    <Link className="dropdown-item add-shelf" to='/addshelf'>Add a new shelf</Link>
-                                </li>
-                            </ul>
+                        <div className="navlink nav-text dropdown-button dropdown-toggle" type="button" id="dropdownShelves" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Shelves
                         </div>
-                    <Link to="/login" className='navlink nav-text'>
-                        Log In
-                    </Link>
-                    <Link to="/signup" className='navlink nav-text'>
-                        Sign Up
-                    </Link>
-                    <button className='navlink nav-text logout-btn' onClick={props.logout}>Log out</button>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownShelves">
+                            {props.shelves ? props.shelves.map((shelf, index)=>
+                                <li key={index}>
+                                    <Link className="dropdown-item" to={`/shelves/${shelf._id}`}>{shelf.name}</Link>
+                                </li>
+                            ) : <li>no shelves to show</li>}
+                            <li key='addshelf'>
+                                <Link className="dropdown-item add-shelf" to='/addshelf'>Add a new shelf</Link>
+                            </li>
+                        </ul>
+                        </div>
+                    :''}
+                    {props.user ? 
+                        <button className='navlink nav-text logout-btn' onClick={props.logout}>Log out</button>
+                    :
+                        <Link to="/login" className='navlink nav-text'>
+                            Log In
+                        </Link>
+                    }   
+                    {props.user ? '' :
+                        <Link to="/signup" className='navlink nav-text'>
+                            Sign Up
+                        </Link>
+                    }
                 </div>
             </div>
         </nav>
