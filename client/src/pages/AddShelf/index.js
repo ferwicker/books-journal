@@ -23,7 +23,7 @@ function AddShelf(){
     //scroll page to top
     useEffect(() => {
         window.scrollTo(0, 0)
-        setShelfAdded(false);
+        //setShelfAdded(false);
       }, []);
 
     //on change handler
@@ -49,8 +49,8 @@ function AddShelf(){
                     setFormObject({
                         shelfname: ''
                     })
-                    setShelfAdded(true);
-                    //console.log(shelfAdded);
+                    //setShelfAdded(true);
+                    window.location.reload();
                 } else {
                     alert('There was an error adding the shelf!');
                 }
