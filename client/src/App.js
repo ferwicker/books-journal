@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Discover from './pages/Discover';
 import AddShelf from './pages/AddShelf';
 import Shelf from './pages/Shelf';
+import NoMatch from './pages/NoMatch';
 
 //import logo from "./logo.svg";
 
@@ -72,11 +73,14 @@ function App(){
                     <Discover />
                   </Route>
                   <Route exact path='/addshelf'>
-                        <AddShelf />
-                    </Route>
+                    <AddShelf />
+                  </Route>
                   <Route exact path='/shelves/:id'>
-                        <Shelf />
-                    </Route>
+                    <Shelf />
+                  </Route>
+                  <Route>
+                    <NoMatch />
+                  </Route>
                 </Switch>
               </Wrapper>
               <Footer></Footer>

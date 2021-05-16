@@ -71,3 +71,13 @@
     -webkit-text-fill-color: transparent;
     text-align: center;
   }
+
+.h1-404 {
+    font-size: 72px;
+    font-weight: 900;
+    margin-top: 40px;
+}
+
+.p-404 {
+    font-size: 20px;
+}
