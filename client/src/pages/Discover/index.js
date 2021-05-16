@@ -63,7 +63,9 @@ function Discover(){
                 shelf: shelfId,
                 book: bookId
             }).then(()=>{
-            console.log('book saved! Shelf: ' + shelfId + ' Book: ' + bookId);
+                const thisshelf = currentUser.shelves.find(item => item._id === shelfId);
+                thisshelf.books.push(bookId);
+                console.log('book saved! Shelf: ' + shelfId + ' Book: ' + bookId);
             }).catch((err)=>console.log(err))
         }
       }
@@ -71,7 +73,7 @@ function Discover(){
     return (
         <Container>
             <Row>
-                <div className='discover-top'>
+                <div className='page-top'>
                     <h1>Discover Your Next Favourite Read</h1>
                     <form className='d-sm-flex align-items-center search-form' onSubmit={handleFormSubmit}>
                         <Input

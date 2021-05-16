@@ -6,6 +6,8 @@ import Col from "../../components/Col";
 import Container from "../../components/Container";
 import Row from "../../components/Row";
 
+import logo from '../../assets/logo.svg'
+
 function Footer () {
     return (
         <footer className='container-fluid'>
@@ -14,7 +16,7 @@ function Footer () {
                     <Col size='sm-4'>
                         <div className='div-100 d-flex flex-column justify-content-center align-items-start'>
                             <Link to="/">
-                                <img className="footer-brand" src='logo.svg' alt='Book Journal logo'></img>
+                                <img className="footer-brand" src={logo} alt='Book Journal logo'></img>
                             </Link>
                         </div>
                     </Col>

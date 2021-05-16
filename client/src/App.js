@@ -9,6 +9,8 @@ import About from './pages/About';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import Discover from './pages/Discover';
+import AddShelf from './pages/AddShelf';
+import Shelf from './pages/Shelf';
 
 //import logo from "./logo.svg";
 
@@ -20,6 +22,7 @@ import Wrapper from './components/Wrapper';
 function App(){
 
   const [currentUser, setCurrentUser] = useState("");
+  const [userShelves, setUserShelves] = useState("");
 
   useEffect(() => {
     API.userLoggedIn().then(response => {
@@ -29,6 +32,7 @@ function App(){
         const currentuser=response.data;
         API.userShelves({id:reqId}).then((resshelves)=> {
           //console.log('front end shelves: ' + resshelves.data)
+          setUserShelves(resshelves.data);
           currentuser.shelves=resshelves.data
         }).then(()=>{
           setCurrentUser(currentuser);
@@ -41,7 +45,8 @@ function App(){
       <BrowserRouter>
           <userContext.Provider value={[currentUser, setCurrentUser]}>
               <Wrapper>
-                <Nav />
+                <Nav 
+                  shelves={userShelves || 'no shelves'}/>
                 <Switch>
                   <Route exact path={['/', '/about']}>
                     <About />
@@ -55,6 +60,12 @@ function App(){
                   <Route exact path='/discover'>
                     <Discover />
                   </Route>
+                  <Route exact path='/addshelf'>
+                        <AddShelf />
+                    </Route>
+                  <Route exact path='/shelves/:id'>
+                        <Shelf />
+                    </Route>
                 </Switch>
               </Wrapper>
               <Footer></Footer>

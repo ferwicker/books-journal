@@ -27,4 +27,7 @@ nav {
     color: #fff;
 }
 
-
+.dropdown-button {
+    border: none;
+    background-color: none;
+}

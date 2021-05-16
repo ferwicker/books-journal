@@ -131,4 +131,17 @@ module.exports = function(app) {
         res.json(response);
       })
   })
+
+  //create a new shelf
+  app.post("/api/addshelf", (req,res) => {
+    const shelfname = req.body.name;
+    const userid = req.body.user;
+    Shelf.create({
+      name: shelfname,
+      userid: userid,
+      books: []
+    }).then((newshelf)=>{
+      res.json(newshelf);
+    })
+  })
 };

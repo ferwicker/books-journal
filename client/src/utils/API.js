@@ -34,5 +34,9 @@ export default {
 
   saveBook: function(data) {
     return axios.post("/api/shelf/addbook", data);
+  },
+
+  createShelf: function(data) {
+    return axios.post("/api/addshelf", data);
   }
 };
