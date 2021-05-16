@@ -50,11 +50,11 @@ function AddShelf(){
                         shelfname: ''
                     })
                     setShelfAdded(true);
-                    console.log(shelfAdded);
+                    //console.log(shelfAdded);
                 } else {
                     alert('There was an error adding the shelf!');
                 }
-            })
+            }).then(()=>{console.log(currentUser.shelves)})
                 .catch(err => console.log(err));
            
         } 

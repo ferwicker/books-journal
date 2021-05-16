@@ -46,6 +46,7 @@ function App(){
     e.preventDefault();
     API.userLogout().then((res)=>{
       setCurrentUser('');
+      window.location='/';
     });
   }
 

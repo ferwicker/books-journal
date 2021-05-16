@@ -42,3 +42,13 @@ nav {
 .logout-btn:hover {
     background: rgb(95, 30, 153);
 }
+
+a.dropdown-item.add-shelf {
+    background: #8F36DD;
+    color: #fff;
+    transition: .5s ease all;
+}
+
+a.dropdown-item.add-shelf:hover {
+    background: #44EA93;
+}

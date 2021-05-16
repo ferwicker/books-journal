@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useState, useEffect, useContext} from "react";
+import { userContext } from "../../utils/Context.js";
+
 import { Link } from "react-router-dom";
 import logo from '../../assets/logo.svg'
 import "./style.css";
 
 function Nav (props) {
+    const [currentUser, setCurrentUser] = useContext(userContext);
+    const [userShelves, setUserShelves] = useState([]);
+
+    useEffect(() => {
+        setUserShelves(currentUser.shelves);
+        console.log('shelves set NAV')
+      }, [currentUser]);
 
     return (
         <nav className='navbar navbar-expand-lg fixed-top'>
@@ -26,13 +35,13 @@ function Nav (props) {
                                 My Shelves
                             </div>
                             <ul className="dropdown-menu" aria-labelledby="dropdownShelves">
-                                {props.shelves !== 'no shelves' ? props.shelves.map((shelf, index)=>
+                                {userShelves !== undefined && userShelves.length > 0 ? userShelves.map((shelf, index)=>
                                     <li key={index}>
                                         <Link className="dropdown-item" to={`/shelves/${shelf._id}`}>{shelf.name}</Link>
                                     </li>
                                 ) : <li>no shelves to show</li>}
                                 <li key='addshelf'>
-                                    <Link className="dropdown-item" to='/addshelf'>Add a new shelf</Link>
+                                    <Link className="dropdown-item add-shelf" to='/addshelf'>Add a new shelf</Link>
                                 </li>
                             </ul>
                         </div>
