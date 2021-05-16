@@ -31,3 +31,14 @@ nav {
     border: none;
     background-color: none;
 }
+
+.logout-btn {
+    background: none;
+    border: #fff solid 1px;
+    border-radius: 10px;
+    transition: color .15s ease-in-out all;
+}
+
+.logout-btn:hover {
+    background: rgb(95, 30, 153);
+}

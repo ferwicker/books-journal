@@ -27,7 +27,8 @@ function App(){
   useEffect(() => {
     API.userLoggedIn().then(response => {
       //the current user will go here
-      if(response !== undefined){
+      console.log(response)
+      if(response.data !== 'no user'){
         const reqId = response.data.id //this returns the right object
         const currentuser=response.data;
         API.userShelves({id:reqId}).then((resshelves)=> {
@@ -41,11 +42,19 @@ function App(){
     })
   }, []);
 
+  function handleLogout(e){
+    e.preventDefault();
+    API.userLogout().then((res)=>{
+      setCurrentUser('');
+    });
+  }
+
   return (
       <BrowserRouter>
           <userContext.Provider value={[currentUser, setCurrentUser]}>
               <Wrapper>
                 <Nav 
+                  logout = {handleLogout}
                   shelves={userShelves || 'no shelves'}/>
                 <Switch>
                   <Route exact path={['/', '/about']}>

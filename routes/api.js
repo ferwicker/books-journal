@@ -107,7 +107,11 @@ module.exports = function(app) {
   // We use this endpoint to verify a user was previously logged in, by checking the session object. isAuthenticated() is a property provided by passport.
   app.get("/api/logged-in", (req, res) => {
     console.log('test')
-    res.json({username:req.user.username, id:req.user._id});
+    if (req.user){
+      res.json({username:req.user.username, id:req.user._id});
+    } else {
+      res.send('no user');
+    } 
   });
 
   //get the logged in user's shelved -- works!

@@ -13,6 +13,10 @@ export default {
     return axios.post("/api/login", userData);
   },
 
+  userLogout: function() {
+    return axios.get("/logout")
+  },
+
   // Create default shelves
   createDefaultShelves: function(userId) {
     return axios.post("/api/createdefaultshelves", userId);

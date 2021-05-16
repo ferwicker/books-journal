@@ -42,6 +42,7 @@ function Nav (props) {
                     <Link to="/signup" className='navlink nav-text'>
                         Sign Up
                     </Link>
+                    <button className='navlink nav-text logout-btn' onClick={props.logout}>Log out</button>
                 </div>
             </div>
         </nav>
