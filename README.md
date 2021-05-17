@@ -38,7 +38,7 @@ The main pain points for Goodreads users identified are:
 ### Alternatives to Goodreads
 - *Storygraph*: a nice alternative that focuses on tailored book recommendations. It encourages users to import their Goodreads data. It uses user generated 'mood' tags to help readers choose books. The UI is very simple, a bit too much so, and it is not the simplest to use. It also has 4 'base' shelves (they've added a 'did-not-finish' shelf to Goodreads base shelves). The review 'form' is very detailed, but that also makes it overwhelming. 
 - *Bookly*: this is a more 'playful' kind of platform, focusing on a cartoon 'assistant', daily reading goals, and stats. It has a LOT of paid only features. On the bright side, it allows you to add shelves or 'collections' freely.
-- *BookSloth*:
+- *BookSloth*: From all the alternatives found, this one sounds the best. Unfortunately actually signing up for it proved tricky, with no option on desktop (Facebook or Google login option but it doesn't do anything if you dont have an account), and on mobile it requires you to selct you favoutire genres and 'reading elements' but the screen was blank with no choices and it does not let you progress.
 
 ## Process
 As a designer, I usually start planning my projects and find inspiration in working on the UI design first. This app was different. The back/front end functionality took centre stage and was the first priority for development. Once the basics were underway, the look and feel (kept as simple as possible) was added and coded into the app.
