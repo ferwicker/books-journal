@@ -24,25 +24,40 @@ module.exports = function(app) {
   // If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", async (req, res) => {
-      //console.log('received')
-      User.create({
-        email: req.body.email,
-        username: req.body.username,
-        password: await bcrypt.hash(req.body.password, 10)
-      })
-        .then((newuser) => {
-          const createduser ={
-            id: newuser._id,
-            email: newuser.email,
-            username: newuser.username,
-          }
-          //send new user to front end
-          res.json(createduser);
-          console.log('signup success');
-        })
-          .catch(err => {
-            res.status(401).json(err);
-          });
+      const password = await bcrypt.hash(req.body.password, 10)
+      //with checks
+      User.find({email: req.body.email}).then((user) => {
+        if(user.length>0){
+          res.send('email already in use');
+        } else {
+          User.find({username: req.body.username}).then((username) => {
+            if(username.length>0){
+              res.send('username already in use');
+            } else {
+              console.log('create user')
+              User.create({
+                email: req.body.email,
+                username: req.body.username,
+                password: password
+              })
+                .then((newuser) => {
+                  const createduser ={
+                    id: newuser._id,
+                    email: newuser.email,
+                    username: newuser.username,
+                  }
+                  //send new user to front end
+                  res.json(createduser);
+                  console.log('signup success');
+                })
+                  .catch(err => {
+                    res.status(401).json(err);
+                  });
+            }
+          })
+        }
+      });
+      
   });
 
   //route to create default shelves after the user is created

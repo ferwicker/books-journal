@@ -46,7 +46,11 @@ function SignUp(){
                     password: formObject.password
                   })
                     .then((res) => {
-                    if(res.status === 200){
+                        if(res.data === 'email already in use'){
+                            alert('that email is already being used')
+                        } else if (res.data === 'username already in use') {
+                            alert('that username is already being used')
+                        } else if(res.status === 200){
                         //log user in here
                         API.userLogin({
                             email: formObject.email,
@@ -106,6 +110,7 @@ function SignUp(){
                         >
                             Create account
                         </FormBtn>
+                        <div>alert</div>
                         </form>
                         <p className='login-alternative'>Already have an account? <Link to="/login">Log in instead</Link>.</p>
                     </div>
