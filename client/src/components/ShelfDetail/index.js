@@ -20,24 +20,26 @@ function ShelfDetail(props) {
     const [booksArray, setBooksArray] = useState([])
 
     const [currentShelf, setCurrentShelf] = useState('no shelf');
+    const [removedBook, setRemovedBook] = useState(false);
     const {id}=useParams();
 
     //scroll page to top
     useEffect(() => {
         window.scrollTo(0, 0);
         setBooksArray([]);
+        setRemovedBook(false);
         console.log('re rendering use effect')
         if(currentUser.shelves){
             const getShelf = currentUser.shelves.find(item => item._id === id);
-            console.log(getShelf._id);
+            //console.log(getShelf._id);
             setCurrentShelf(getShelf);
             //api call here
             API.getShelfInfo({id:getShelf._id}).then((res)=>{
                 setBooksArray(res.data);
-                console.log(res.data)
+                //console.log(res.data)
             });
         }
-      }, [id, currentUser]);
+      }, [id, currentUser, removedBook]);
 
       function handleRemove(e){
           e.preventDefault();
@@ -47,7 +49,7 @@ function ShelfDetail(props) {
                   shelfid: e.target.getAttribute("data-shelfid")
                 }).then((res)=>{
                     console.log(res);
-                    window.location.reload();
+                    setRemovedBook(true);
                 })
       }
       
@@ -66,7 +68,7 @@ function ShelfDetail(props) {
                         </div>
                     </Col>
                 )) :
-                <p>Looks like you don't have any books in  this shelf! <Link to='discover' className='link'>Find some books to add.</Link></p>}
+                <p>Looks like you don't have any books in  this shelf! <Link to='/discover' className='link'>Find some books to add.</Link></p>}
             </Row>
     </Container>
     );
