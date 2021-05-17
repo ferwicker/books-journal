@@ -24,6 +24,7 @@ Infinite TBR is a web app that helps users manage their personal libraries. Crea
 - [react-router-dom](https://reactrouter.com/)
 - [styled components](https://styled-components.com/)
 - [react-animations](http://react-animations.herokuapp.com/)
+- [Google Books API](https://developers.google.com/books)
 
 ## Motivation
 As an avid reader, I have been a [Goodreads]() user for years. While the app does reasonably well in some areas, and has some pretty cool features (such as the ability to use the camera to scan a book to search its info), it has some major pain points that have not been addressed in years.
@@ -93,3 +94,7 @@ Small wins but nevertheless important! The real time update of the shelves in th
 - All icons from [Fontawesome](https://fontawesome.com/)
 - Fonts from [Adobe Fonts](https://fonts.adobe.com/)
 - Illustrations from [Shutterstock](https://www.shutterstock.com/)
+
+### Happy Reading!
+
+<img src="./README%20assets/book-illustration.svg" alt="book characters illustration" width="600"/>

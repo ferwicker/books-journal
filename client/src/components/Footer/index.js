@@ -22,8 +22,8 @@ function Footer () {
                     </Col>
                     <Col size='sm-8'>
                         <div className='div-100 d-flex flex-column align-items-end'>
-                            <a className='footerlink' href='https://github.com/ferwicker/books-journal'>See Github repo</a>
-                            <a className='footerlink' href='http://ferwicker.com/contact'>Contact the developer</a>
+                            <a className='footerlink' href='https://github.com/ferwicker/books-journal' target='_blank'>See Github repo</a>
+                            <a className='footerlink' href='mailto:fer.wicker@gmail.com' target='_blank'>Contact the developer</a>
                         </div>
                     </Col>
                 </Row>

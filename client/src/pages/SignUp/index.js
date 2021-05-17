@@ -110,7 +110,7 @@ function SignUp(){
                         >
                             Create account
                         </FormBtn>
-                        <div>alert</div>
+                        {/* <div>alert</div> */}
                         </form>
                         <p className='login-alternative'>Already have an account? <Link to="/login">Log in instead</Link>.</p>
                     </div>
