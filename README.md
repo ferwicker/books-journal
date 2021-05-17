@@ -1,5 +1,5 @@
 # ♾️TBR
-logo
+![Logo](./README%20assets/logo-08.png) <!-- .element height="100px" -->
 
 Infinite TBR is a web app that helps users manage their personal libraries. Created with avid readers in mind, the app aims to create a simple user friendly experience in a modern app. Currently a library management app, the aim is to in the near future add a social interaction element to it.
 
@@ -15,18 +15,18 @@ Infinite TBR is a web app that helps users manage their personal libraries. Crea
 
 ## Built With
 
-- React
-- Bootstrap
-- MongoDB
-- Node
-- Express
-- Passport
-- react-router-dom
-- styled-components
-- react-animations
+- [React](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
+- [Passport](http://www.passportjs.org/)
+- [react-router-dom](https://reactrouter.com/)
+- [styled components](https://styled-components.com/)
+- [react-animations](http://react-animations.herokuapp.com/)
 
 ## Motivation
-As an avid reader, I have been a Goodreads user for years. While the app does reasonably well in some areas, and has some pretty cool features (such as the ability to use the camera to scan a book to search its info), it has some major pain points that have not been addressed in years.
+As an avid reader, I have been a [Goodreads]() user for years. While the app does reasonably well in some areas, and has some pretty cool features (such as the ability to use the camera to scan a book to search its info), it has some major pain points that have not been addressed in years.
 
 ### **Goodreads pain points**
 The main pain points for Goodreads users identified are:
@@ -41,6 +41,8 @@ The main pain points for Goodreads users identified are:
 
 ## Process
 As a designer, I usually start planning my projects and find inspiration in working on the UI design first. This app was different. The back/front end functionality took centre stage and was the first priority for development. Once the basics were underway, the look and feel (kept as simple as possible) was added and coded into the app.
+
+<img src="./README%20assets/sign-up-screen.jpg" alt="sign up screen" width="600"/>
 
 ### Research
 Research included making accounts at the above Goodreads alternatives and exploring their functionalities.
@@ -68,6 +70,10 @@ Small wins but nevertheless important! The real time update of the shelves in th
 - Removing books from shelves
 - Seeing all books in a shelf
 
+### [See deployed app.](https://blooming-falls-68032.herokuapp.com/)
+
+<img src="./README%20assets/shelf-detail.jpg" alt="shelf detail page" width="600"/>
+
 ## Roadmap
 ### Short Term
 - Improving alerts for success/errors in the authentication section
@@ -84,6 +90,6 @@ Small wins but nevertheless important! The real time update of the shelves in th
   - Users can follow other users and see their public reviews and shelves
 
 ## Credits
-- All icons from Fontawesome
-- Fonts from Adobe Fonts
-- Illustrations from Shutterstock
+- All icons from [Fontawesome](https://fontawesome.com/)
+- Fonts from [Adobe Fonts](https://fonts.adobe.com/)
+- Illustrations from [Shutterstock](https://www.shutterstock.com/)
