@@ -27,7 +27,6 @@ function ShelfDetail(props) {
     useEffect(() => {
         window.scrollTo(0, 0);
         setBooksArray([]);
-        setRemovedBook(false);
         console.log('re rendering use effect')
         if(currentUser.shelves){
             const getShelf = currentUser.shelves.find(item => item._id === id);
@@ -49,7 +48,11 @@ function ShelfDetail(props) {
                   shelfid: e.target.getAttribute("data-shelfid")
                 }).then((res)=>{
                     console.log(res);
-                    setRemovedBook(true);
+                    if (removedBook === false){
+                        setRemovedBook(true);
+                    } else {
+                        setRemovedBook(false);
+                    }
                 })
       }
       
