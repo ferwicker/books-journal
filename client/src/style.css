@@ -16,3 +16,8 @@ h1 {
   color: #8054C6;
   font-family: Termina, sans-serif;
 }
+
+a {
+  text-decoration: none;
+  color: #8054C6;
+}

@@ -40,7 +40,19 @@ export default {
     return axios.post("/api/shelf/addbook", data);
   },
 
+  saveShelfToBook: function(data) {
+    return axios.post("/api/book/addshelf", data);
+  },
+
   createShelf: function(data) {
     return axios.post("/api/addshelf", data);
+  },
+
+  getShelfInfo: function(id) {
+    return axios.post("/api/shelf/getbooks", id);
+  },
+
+  removeBook: function(data) {
+    return axios.post("/api/shelf/removebook", data);
   }
 };

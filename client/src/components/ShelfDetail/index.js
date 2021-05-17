@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { userContext } from "../../utils/Context.js";
 //components
 import Container from '../Container';
@@ -9,6 +9,7 @@ import Col from '../Col';
 import "./style.css"
 
 import API from "../../utils/API.js";
+import { get } from "mongoose";
 
 const axios = require('axios');
 
@@ -28,26 +29,44 @@ function ShelfDetail(props) {
         console.log('re rendering use effect')
         if(currentUser.shelves){
             const getShelf = currentUser.shelves.find(item => item._id === id);
-            console.log(getShelf.books);
+            console.log(getShelf._id);
             setCurrentShelf(getShelf);
-            setBooksArray(getShelf.books);
+            //api call here
+            API.getShelfInfo({id:getShelf._id}).then((res)=>{
+                setBooksArray(res.data);
+                console.log(res.data)
+            });
         }
       }, [id, currentUser]);
 
-      //this is not running
+      function handleRemove(e){
+          e.preventDefault();
+          API.removeBook(
+              {
+                  bookid: e.target.getAttribute("data-bookid"),
+                  shelfid: e.target.getAttribute("data-shelfid")
+                }).then((res)=>{
+                    console.log(res);
+                    window.location.reload();
+                })
+      }
       
 
   return (
     <Container>
             <h1>{currentShelf.name}</h1> 
             <Row>
-                {booksArray.map((book,index)=>(
+                {booksArray.length>0 ? booksArray.map((book,index)=>(
                     <Col key={index} size='sm-3'>
                         <div className='book-preview'>
-                            <h4>{book}</h4>
+                            <img src={book.thumbnail} alt={`${book.title} cover.`} className='book-thumbnail'></img>
+                            <h4>{book.title}</h4>
+                            <p>{book.author}</p>
+                            <button className='remove-btn' onClick={handleRemove} data-bookid={book.googleId} data-shelfid={currentShelf._id}><i className="far fa-times-circle"></i> Remove from this shelf</button>
                         </div>
                     </Col>
-                ))}
+                )) :
+                <p>Looks like you don't have any books in  this shelf! <Link to='discover' className='link'>Find some books to add.</Link></p>}
             </Row>
     </Container>
     );

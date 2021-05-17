@@ -1,3 +1,28 @@
 .book-preview {
     margin: 40px 0;
+    text-align: center;
+}
+
+.book-thumbnail {
+    margin-bottom: 20px;
+}
+
+.link {
+    text-decoration: none;
+    color: #8054C6;
+    transition: .15s all ease;
+  }
+
+.link:hover{
+    color: #44EA93;
+}
+
+.remove-btn {
+    color: #f51f55;
+    background: none;
+    border: none;
+}
+
+.remove-btn:active {
+    color: #44EA93;
 }

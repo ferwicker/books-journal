@@ -41,7 +41,7 @@ function Discover(){
         if(formObject.search !== '') {
             //call the API with the search parameter
             axios.get(`https://www.googleapis.com/books/v1/volumes?q=${formObject.search}`).then(resp => {
-                console.log(resp.data.items[0].volumeInfo.title);
+                console.log(resp.data.items);
                 setBooksArray(resp.data.items);
                 setFormObject({
                     search: "",
@@ -56,6 +56,8 @@ function Discover(){
         e.preventDefault();
         const shelfId = e.target.getAttribute("data-shelfid") || ''; 
         const bookId = e.target.getAttribute("data-bookid");
+        const index = e.target.getAttribute("data-index");
+
         if(shelfId === ''){
             alert('Please select a shelf to save to!')
         } else {
@@ -65,7 +67,18 @@ function Discover(){
             }).then(()=>{
                 const thisshelf = currentUser.shelves.find(item => item._id === shelfId);
                 thisshelf.books.push(bookId);
-                console.log('book saved! Shelf: ' + shelfId + ' Book: ' + bookId);
+                //console.log('book saved! Shelf: ' + shelfId + ' Book: ' + bookId);
+                API.saveShelfToBook({
+                    shelf: shelfId,
+                    book: bookId,
+                    title:booksArray[index].volumeInfo.title,
+                    author:booksArray[index].volumeInfo.authors[0],
+                    thumbnail:booksArray[index].volumeInfo.imageLinks.smallThumbnail || '',
+                    snippet:booksArray[index].searchInfo.textSnippet || 'no description available'
+                }).then(()=>{
+                    console.log('book saved! Shelf: ' + shelfId + ' Book: ' + bookId);
+                    //need to let user know somehow
+                }).catch((bookerr)=>console.log(bookerr))
             }).catch((err)=>console.log(err))
         }
       }
@@ -94,9 +107,10 @@ function Discover(){
             {booksArray.length > 0 ? booksArray.map((book,index)=>(
                 <ResultListItem 
                     key={book.id}
+                    index={index}
                     bookId={book.id}
                     title={book.volumeInfo.title}
-                    author={book.volumeInfo.authors[0]}
+                    author={book.volumeInfo.authors ? book.volumeInfo.authors[0] : 'no author'}
                     snippet={book.searchInfo ? book.searchInfo.textSnippet : 'no description available'} 
                     thumbnail={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''}
                     shelves={currentUser.shelves}

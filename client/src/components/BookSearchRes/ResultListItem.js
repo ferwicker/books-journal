@@ -47,6 +47,7 @@ export function ResultListItem(props) {
               className='save-btn'
               data-bookid= {props.bookId}
               data-shelfid={selectShelf}
+              data-index={props.index}
               onClick= {props.onClick}
             />
           </Col>
