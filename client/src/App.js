@@ -23,7 +23,6 @@ import Wrapper from './components/Wrapper';
 function App(){
 
   const [currentUser, setCurrentUser] = useState("");
-  const [userShelves, setUserShelves] = useState("");
 
   useEffect(() => {
     API.userLoggedIn().then(response => {
@@ -33,8 +32,6 @@ function App(){
         const reqId = response.data.id //this returns the right object
         const currentuser=response.data;
         API.userShelves({id:reqId}).then((resshelves)=> {
-          //console.log('front end shelves: ' + resshelves.data)
-          setUserShelves(resshelves.data);
           currentuser.shelves=resshelves.data
         }).then(()=>{
           setCurrentUser(currentuser);
@@ -58,7 +55,7 @@ function App(){
                 <Nav 
                   logout = {handleLogout}
                   user = {currentUser.id}
-                  shelves={userShelves}/>
+                />
                 <Switch>
                   <Route exact path={['/', '/about']}>
                     <About />

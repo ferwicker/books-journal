@@ -129,20 +129,19 @@ module.exports = function(app) {
   app.post("/api/shelf/addbook", (req, res) => {
     const shelfid = req.body.shelf;
     const bookid = req.body.book;
-    // trying to find if the current shelf already contains that book
-    // Shelf.find({ books: { $in: [bookid] }})
-    //   .then((shelves) => {
-    //     console.log(shelves[0]._id);
-    //     var results = shelves.filter(function (entry) { return entry._id === shelfid; }); //option 2
-    //     //const thisshelf = shelves.find(item => item._id === shelfid) // option 1
-    //     console.log(results)
-    //   })
-    Shelf.updateOne(
-      { _id: shelfid },
-      { $push: { books: bookid } }
-      ).then((response)=>{
-        res.json(response);
-      })
+    Shelf.find({_id: shelfid, books: bookid}).then((shelf) => {
+      if(shelf.length>0){
+        res.send('already in shelf')
+      } else {
+        Shelf.updateOne(
+          { _id: shelfid },
+          { $push: { books: bookid } }
+          ).then((response)=>{
+            res.json(response);
+          })
+      }
+    }
+    )
   });
 
   //push a shelf into a book's array

@@ -62,7 +62,7 @@ function ShelfDetail(props) {
                             <img src={book.thumbnail} alt={`${book.title} cover.`} className='book-thumbnail'></img>
                             <h4>{book.title}</h4>
                             <p>{book.author}</p>
-                            <button className='remove-btn' onClick={handleRemove} data-bookid={book.googleId} data-shelfid={currentShelf._id}><i className="far fa-times-circle"></i> Remove from this shelf</button>
+                            <button className='remove-btn' onClick={handleRemove} data-bookid={book.googleId} data-shelfid={currentShelf._id}><i className="far fa-times-circle"></i> Remove from shelf</button>
                         </div>
                     </Col>
                 )) :

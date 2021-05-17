@@ -64,21 +64,25 @@ function Discover(){
             API.saveBook({
                 shelf: shelfId,
                 book: bookId
-            }).then(()=>{
-                const thisshelf = currentUser.shelves.find(item => item._id === shelfId);
-                thisshelf.books.push(bookId);
-                //console.log('book saved! Shelf: ' + shelfId + ' Book: ' + bookId);
-                API.saveShelfToBook({
-                    shelf: shelfId,
-                    book: bookId,
-                    title:booksArray[index].volumeInfo.title,
-                    author:booksArray[index].volumeInfo.authors[0],
-                    thumbnail:booksArray[index].volumeInfo.imageLinks.smallThumbnail || '',
-                    snippet:booksArray[index].searchInfo.textSnippet || 'no description available'
-                }).then(()=>{
-                    console.log('book saved! Shelf: ' + shelfId + ' Book: ' + bookId);
-                    //need to let user know somehow
-                }).catch((bookerr)=>console.log(bookerr))
+            }).then((res)=>{
+                console.log(res);
+                if(res.data === 'already in shelf'){
+                    alert('This book is already saved to this shelf')
+                } else {
+                    const thisshelf = currentUser.shelves.find(item => item._id === shelfId);
+                    thisshelf.books.push(bookId);
+                    API.saveShelfToBook({
+                        shelf: shelfId,
+                        book: bookId,
+                        title:booksArray[index].volumeInfo.title,
+                        author:booksArray[index].volumeInfo.authors[0],
+                        thumbnail:booksArray[index].volumeInfo.imageLinks.smallThumbnail || '',
+                        snippet:booksArray[index].searchInfo.textSnippet || 'no description available'
+                    }).then(()=>{
+                        console.log('book saved! Shelf: ' + shelfId + ' Book: ' + bookId);
+                        //need to let user know somehow
+                    }).catch((bookerr)=>console.log(bookerr))
+                }
             }).catch((err)=>console.log(err))
         }
       }

@@ -5,6 +5,7 @@
 
 .book-thumbnail {
     margin-bottom: 20px;
+    max-height: 200px;
 }
 
 .link {

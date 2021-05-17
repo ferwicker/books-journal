@@ -23,7 +23,7 @@ function AddShelf(){
     //scroll page to top
     useEffect(() => {
         window.scrollTo(0, 0)
-        //setShelfAdded(false);
+        setShelfAdded(false);
       }, []);
 
     //on change handler
@@ -45,12 +45,15 @@ function AddShelf(){
                 if(res.status === 200){
                     console.log(res.data._id);
                     //add shelf to user in current user context
-                    currentUser.shelves.push(res.data);
+                    setCurrentUser({
+                        id: currentUser.id,
+                        shelves:[...currentUser.shelves, res.data],
+                        username: currentUser.username
+                    });
                     setFormObject({
                         shelfname: ''
                     })
-                    //setShelfAdded(true);
-                    window.location.reload();
+                    setShelfAdded(true);
                 } else {
                     alert('There was an error adding the shelf!');
                 }
@@ -82,7 +85,7 @@ function AddShelf(){
                             </FormBtn>
                         </form>
                         {shelfAdded ? 
-                            <div className='login-alternative'>Hooray! Your new shelf has been added to your collection. <Link to='/discover'>Start adding books.</Link>
+                            <div className='success'>Hooray! Your new shelf has been added to your collection. <Link to='/discover'>Add some books.</Link>
                             </div> : ''}
                     </div>
                 </Col>
