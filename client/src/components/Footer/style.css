@@ -7,7 +7,7 @@ footer {
 }
 
 .footer-brand {
-    width: 250px;
+    width: 150px;
 }
 
 .div-100 {
@@ -19,6 +19,7 @@ footer {
     padding: .5rem 1rem;
     color: #fff;
     font-family: montserrat, sans-serif;
+    font-size: 14px;
     text-decoration: none;
     text-transform: uppercase;
     text-shadow: rgba(78, 78, 78, 0.356) 1px 1px 2px;
@@ -26,14 +27,14 @@ footer {
 }
 
 .footerlink:hover {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
     text-shadow: rgba(78, 78, 78, 0.877) 1px 1px 2px;
 }
 
 .footer-credit {
     color: #fff;
     font-family: montserrat, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
     margin: 30px 0 -20px 0;
 }

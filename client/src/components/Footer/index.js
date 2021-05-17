@@ -16,29 +16,19 @@ function Footer () {
                     <Col size='sm-4'>
                         <div className='div-100 d-flex flex-column justify-content-center align-items-start'>
                             <Link to="/">
-                                <img className="footer-brand" src={logo} alt='Book Journal logo'></img>
+                                <img className="footer-brand" src={logo} alt='Infinite TBR logo'></img>
                             </Link>
                         </div>
                     </Col>
                     <Col size='sm-8'>
-                        <div className='div-100 d-flex justify-content-end align-items-center'>
-                            <Link to="/about" className='footerlink'>
-                                About
-                            </Link>
-                            <Link to="/discover" className='footerlink'>
-                                Discover
-                            </Link>
-                            <Link to="/login" className='footerlink'>
-                                Log In
-                            </Link>
-                            <Link to="/signup" className='footerlink'>
-                                Sign Up
-                            </Link>
+                        <div className='div-100 d-flex flex-column align-items-end'>
+                            <a className='footerlink' href='https://github.com/ferwicker/books-journal'>See Github repo</a>
+                            <a className='footerlink' href='http://ferwicker.com/contact'>Contact the developer</a>
                         </div>
                     </Col>
                 </Row>
             </Container>
-            <p className='footer-credit'>Made with bookish ❤️ by <a href='http://ferwicker.com/' target='_blank'>Fer Wicker</a></p>
+            <p className='footer-credit'>© 2021 Made with bookish ❤️ by <a href='http://ferwicker.com/' target='_blank'>Fer Wicker.</a></p>
         </footer>
     )
 };
